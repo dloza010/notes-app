@@ -13,12 +13,14 @@
             <p>
               <?= htmlspecialchars($note['body']) ?>
             </p>
-            <form method="POST" class="mt-6">
-<!--                here we are suggesting to our backend that we want a delete method-->
-                <input type="hidden" name="_method" value="DELETE">
-                <input type="hidden" name="id" value="<?= $note['id'] ?>">
-                <button class="text-sm text-red-500">Delete</button>
-            </form>
+            
+            <footer class="mt-6">
+                <a href="/note/edit?id=<?= $note['id'] ?>"
+                class="inline mt-6 bg-blue-500 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">
+                    Edit
+                </a>
+            </footer>
+            
 		</div>
 	</main>
 
