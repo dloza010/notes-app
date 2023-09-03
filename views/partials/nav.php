@@ -37,7 +37,7 @@
 
                     <!-- Profile dropdown -->
 									<?php if ($_SESSION['user'] ?? false) : ?>
-                      <div class="relative ml-3">
+                      <div class="ml-3 flex align-middle">
                           <button type="button"
                                   class="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                                   id="user-menu-button" aria-expanded="false" aria-haspopup="true">
@@ -49,11 +49,11 @@
                           </button>
                       </div>
 
-                      <div class="ml-3">
-                          <form method="POST" action="/session">
+                      <div class="ml-3 flex items-center">
+                          <form method="POST" action="/session" class="m-0 flex items-center">
                               <input type="hidden" name="_method" value="DELETE"/>
 
-                              <button class="text-white">Log Out</button>
+                              <button class="text-white align-middle">Log Out</button>
                           </form>
                       </div>
 									<?php else : ?>

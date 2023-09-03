@@ -35,12 +35,10 @@
 	}else{
 		$db->query('INSERT into users (email, password) VALUES(:email, :password)', [
 			'email' => $email,
-			'password' => $password
+			'password' => password_hash($password, PASSWORD_BCRYPT)
 		]);
 		
-		$_SESSION['user'] = [
-			'email' => $email
-		];
+		login($user);
 		
 		echo $_SESSION['user']['email'];
 		
