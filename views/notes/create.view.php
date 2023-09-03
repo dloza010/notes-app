@@ -1,42 +1,53 @@
-<?php require(__DIR__.'/../partials/head.php') ?>
-<?php require(__DIR__.'/../partials/nav.php') ?>
-<?php require(__DIR__.'/../partials/banner.php') ?>
- 
-	<main>
-		<div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-			<!-- Your content -->
-            <form method="POST" action="/notes">
-                <div class="space-y-12">
-                    <div class="border-b border-gray-900/10 pb-12">
-                        
-                        <div class="col-span-full">
-                            <label for="body" class="block text-sm font-medium leading-6 text-gray-900">Body</label>
-                            <div class="mt-2">
-                                <input
-                                    id="body"
-                                    name="body"
-                                    rows="3"
-                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    placeholder="Heres is an idea for a note..."
-                                ><?= $_POST['body'] ?? ''?></input>
-	                            
-	                            <?php if (isset($errors['body'])) : ?>
-                                    <p class="text-red-500 text-xs mt-2"><?= $errors['body'] ?></p>
-                                <?php endif; ?>
-                            </div>
+<?php require base_path('views/partials/head.php') ?>
+<?php require base_path('views/partials/nav.php') ?>
+
+    <main>
+        <div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+            <div class="w-full max-w-md space-y-8">
+                <div>
+                    <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                         alt="Your Company">
+                    <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Register for a new
+                        account</h2>
+                </div>
+
+                <form class="mt-8 space-y-6" action="/register" method="POST">
+                    <div class="-space-y-px rounded-md shadow-sm">
+                        <div>
+                            <label for="email" class="sr-only">Email address</label>
+                            <input id="email" name="email" type="email" autocomplete="email" required
+                                   class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                   placeholder="Email address">
                         </div>
-                        
+
+                        <div>
+                            <label for="password" class="sr-only">Password</label>
+                            <input id="password" name="password" type="password" autocomplete="current-password" required
+                                   class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                   placeholder="Password">
+                        </div>
                     </div>
 
-                <div class="mt-6 flex items-center justify-end gap-x-6">
-                    <button type="button" class="text-sm font-semibold leading-6 text-gray-900">
-                        <a href="/notes">Cancel</a>
-                    </button>
-                    <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
-                </div>
-            </form>
+                    <div>
+                        <button type="submit"
+                                class="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        >
+                            Register
+                        </button>
+                    </div>
 
+                    <ul>
+											<?php if (isset($errors['email'])) : ?>
+                          <li class="text-red-500 text-xs mt-2"><?= $errors['email'] ?></li>
+											<?php endif; ?>
+											
+											<?php if (isset($errors['password'])) : ?>
+                          <li class="text-red-500 text-xs mt-2"><?= $errors['password'] ?></li>
+											<?php endif; ?>
+                    </ul>
+                </form>
+            </div>
         </div>
-	</main>
+    </main>
 
-<?php require(__DIR__.'/../partials/footer.php') ?>
+<?php require base_path('views/partials/footer.php') ?>
