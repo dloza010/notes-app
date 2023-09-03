@@ -5,7 +5,7 @@
 //			'/about' => 'controllers/about.php',
 //			'/contact' => 'controllers/contact.php',
 //			'/notes' => 'controllers/notes/index.php',
-//		  '/notes/create' => 'controllers/notes/create.php',
+//		  '/notes/create' => 'controllers/notes/create.view.php',
 //			'/note' => 'controllers/notes/show.php'
 //	];
 	
@@ -20,7 +20,10 @@
 	$router->get('/note/edit', 'controllers/notes/edit.php');
 	$router->patch('/note', 'controllers/notes/update.php');
 	
-	$router->get('/notes/create', 'controllers/notes/create.php');
+	$router->get('/notes/create', 'controllers/notes/create.view.php');
 	$router->post('/notes', 'controllers/notes/store.php');
+	
+	$router->get('/register', 'controllers/registration/create.php');
+	$router->post('/register', 'controllers/registration/store.php');
 	
 	

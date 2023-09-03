@@ -2,6 +2,8 @@
 	use Core\Database;
 	use Core\App;
 	
+	$heading = 'Notes';
+	
 	$db = App::resolve('Core\Database');
 	
 	$query = 'select * from notes where user_id = 1';
