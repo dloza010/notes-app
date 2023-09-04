@@ -35,14 +35,6 @@
 		
 		public function logout()
 		{
-			// log the user out
-			//clear out the super global
-			$_SESSION = [];
-			//destroy session file
-			session_destroy();
-			
-			//clearing the cookies
-			$params = session_get_cookie_params();
-			setcookie('PHPSESSID', '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+			Session::destroy();
 		}
 	}
