@@ -6,22 +6,21 @@
 	
 	$email = $_POST['email'];
 	$password = $_POST['password'];
-
-	$form = new LoginForm();
-
-	if ($form->validate($email, $password)) {
-		$auth = new Authenticator();
-		
-		if ($auth->loginAttempt($email, $password)){
-			redirect('/');
-		}else{
-			$form->addError('email', 'No matching account found for that email address and password.');
-		}
+	
+	
+	$form = LoginForm::validate([
+		'email' => $email,
+		'password' => $password
+	]);
+	
+	$signedIn = (new Authenticator)->loginAttempt($email, $password);
+	
+	if ($signedIn){
+		$form->addError('email', 'No matching account found for that email address and password.')->throw();
 	}
 	
+	redirect('/');
 	
-	return view('session/create.view.php', [
-		'errors' => $form->errors()
-	]);
+	
 	
 	
